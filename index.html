@@ -1,58 +1,108 @@
 <!DOCTYPE html>
 <html style="font-family:Trebuchet MS">
-<!-- Refers to the line at the top of the webpage --> 
-<style>
-hr { 
-  display: block;
-  margin-top: -0.1em;
-  border-style: solid;
-  border-width: 24px;
-  border-radius: 5px;
-  color: #433939;
-} 
-hr::before {
-  content: "";
-  position: absolute;
-  top: 4.1%;
-  left: 2.6%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: url('https://github.com/LoogiCarry/website/blob/main/favicon.png?raw=true') center/contain no-repeat;
-}
-hr::after {
-  content: "Loogi";
-  position: absolute;
-  top: 4.1%;
-  left: 6%;
-  transform: translate(-50%, -50%);
-  padding: 0 0.5em;
-  font-size: 18px;
-  color: #bebebe;
-}
-</style>
-
-<hr></hr>
 <style>
   body {
-    background-color: #828282; /* fallback */
-    background-image: 
-      linear-gradient(45deg, #747373 25%, transparent 25%),
-      linear-gradient(-45deg, #747373 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #747373 75%),
-      linear-gradient(-45deg, transparent 75%, #747373 75%);
-    background-size: 40px 40px;
-    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    margin: 0;
+  }
+/* tutaj się dzieje pewna magia żeby miec takie fajne tło*/
+  body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    background: repeating-conic-gradient(
+      #828282 0% 25%,
+      #747373 0% 50%
+    );
+    background-size: 80px 80px;
+
+    animation: moveBg 20s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes moveBg {
+    from {
+      transform: rotate(-15.5deg) translate(0, 0);
+    }
+    to {
+      transform: rotate(-15.5deg) translate(100px, 100px);
+    }
   }
 </style>
     <head>
         <title>Loogers</title>
         <link rel="icon" href="https://github.com/LoogiCarry/website/blob/main/favicon.png?raw=true" type="image/x-icon">
     </head>
+<head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+h2, p {
+  margin: 10px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #433939;
+}
+ul li {
+  float: left;
+}
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+ul li a:hover {
+  background-color: #2c2525;
+}
+</style>
+</head>
 <body>
-<img src="https://github.com/LoogiCarry/website/blob/main/Profile%20Picture%20-%20Loogi%20no%20background.png?raw=true" width="25%">
-</img>
-
+<ul>
+  <li><img src="https://github.com/LoogiCarry/website/blob/main/loogily-shmoogly.png?raw=true" width="4%"></img></li>
+  <li><a href="#home">Loogily Shmoogly</a></li>
+</ul>
 </body>
+<style>
+  @property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  .image-rotato {
+    /* trans Y to jest żeby w góre i dól a ten rotate to na prawo na lewo w góre i w dól, do przodu do tyłu w góre i dół*/
+    transform: 
+      translateY(calc(sin(var(--angle)) * 30px)) 
+      rotate(calc(cos(var(--angle)) * 5deg));
+    
+    animation: wave 4s linear infinite;
+    width: 30%;
+  }
+
+  @keyframes wave {
+    to { --angle: 360deg; }
+  }
+</style>
+
+<body style="margin: 0;">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <img 
+      src="https://raw.githubusercontent.com/LoogiCarry/website/df4d194e2a14fcfc9ab5f3ede8be4077aab7cd90/Under%20Construction.svg" 
+      class="image-rotato"
+    >
+  </div>
+</body>
+
 
 </html>
